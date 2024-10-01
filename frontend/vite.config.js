@@ -4,7 +4,14 @@ import path from "node:path";
 
 export default defineConfig({
   plugins: [react()],
-  base: "/netflix-clone",
+  // base: "/netflix-clone",
+  server: {
+    proxy: {
+      "/api": {
+        target: "http://localhost:5000",
+      },
+    },
+  },
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
